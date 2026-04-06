@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PARDNA — Small Business Finance Tips</title>
+  <link href="pardna.css" rel="stylesheet">
+</head>
+<body>
+  <header class="hdr" style="position:static">
+    <div style="display:flex;align-items:center;gap:18px;padding:1rem">
+      <a href="pardna.html" style="text-decoration:none;color:var(--brand);font-family:'Fraunces',serif;font-weight:700;font-size:20px">PARDNA</a>
+      <div style="font-size:13px;color:var(--text2)">Small Business Finance Tips</div>
+    </div>
+  </header>
+
+  <main style="max-width:980px;margin:2rem auto;padding:0 1.25rem">
+    <!-- Featured finance video of the day -->
+    <section class="card daily-video-section" style="margin-bottom:1.5rem">
+      <div class="daily-video-head">
+        <div>
+          <div class="card-title">Daily finance tip for your business</div>
+          <div class="daily-video-sub">A fresh featured YouTube lesson rotates each day to help with cash flow, pricing, bookkeeping, and smarter planning.</div>
+        </div>
+        <div class="daily-badge">New today</div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-top:12px">
+        <div style="flex:1;min-width:300px">
+          <div class="video-frame-wrap video-frame-shell">
+            <iframe id="tips-video" src="" width="100%" height="250" style="display:none;border-radius:8px;background:#000" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div id="video-placeholder" class="video-placeholder" role="button" tabindex="0" onclick="playFeaturedVideo()" onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();playFeaturedVideo();}">
+              <img id="video-placeholder-thumb" class="video-placeholder__thumb" src="https://img.youtube.com/vi/6x1maK6MbNQ/hqdefault.jpg" alt="Financial planning video thumbnail">
+              <div class="video-placeholder__overlay"></div>
+              <div class="video-placeholder__content">
+                <div class="video-placeholder__badge">Video preview</div>
+                <div class="video-placeholder__play">▶</div>
+                <div class="video-placeholder__title">Financial Planning for Small Business Owners</div>
+                <div class="video-placeholder__text">Click to play the video right here on the page.</div>
+              </div>
+            </div>
+          </div>
+          <div class="daily-topic-card">
+            <div class="daily-topic-label">Today's focus</div>
+            <div id="daily-video-title" class="daily-topic-title">Loading today’s video…</div>
+            <div id="daily-video-copy" class="daily-topic-copy">Helpful tips for keeping your business finances steady.</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <input id="video-url" placeholder="Paste a YouTube URL if you want a different video" style="flex:1;padding:8px;border-radius:8px;border:1px solid var(--border)">
+            <button class="btn btn-p" onclick="loadVideoFromInput()">Load</button>
+          </div>
+        </div>
+
+        <div style="width:320px;min-width:240px">
+          <div style="font-weight:700;margin-bottom:6px">Search for more using keywords</div>
+          <div class="keyword-chips" style="margin-bottom:10px">
+            <button class="keyword-chip" type="button" onclick="useVideoKeyword('cash flow tips for small business')">Cash flow</button>
+            <button class="keyword-chip" type="button" onclick="useVideoKeyword('small business budgeting tips')">Budgeting</button>
+            <button class="keyword-chip" type="button" onclick="useVideoKeyword('bookkeeping for beginners small business')">Bookkeeping</button>
+            <button class="keyword-chip" type="button" onclick="useVideoKeyword('pricing strategy for small business')">Pricing</button>
+            <button class="keyword-chip" type="button" onclick="useVideoKeyword('small business emergency fund tips')">Emergency fund</button>
+          </div>
+          <div style="display:flex;gap:8px">
+            <input id="yt-search" placeholder="Search finance tips by keyword" style="flex:1;padding:8px;border-radius:8px;border:1px solid var(--border)">
+            <button class="btn btn-s" onclick="searchYouTube()">Find videos</button>
+          </div>
+          <div style="font-size:12px;color:var(--text3);margin-top:8px">Choose from 3 curated video results below and watch one right here on the page.</div>
+          <div id="video-results-label" class="video-results-label">Showing 3 curated picks</div>
+          <div id="video-results" class="video-results" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:1.5rem;margin-bottom:1.5rem">
+      <div class="card-title">Interactive checklist — what to do this week</div>
+      <div id="actions" class="clickable-menu" style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <button class="menu-card">📨<div class="menu-card__title">Send an invoice reminder</div><div class="menu-card__desc">A friendly nudge brings cash in fast.</div></button>
+        <button class="menu-card">⏱️<div class="menu-card__title">Schedule a 30-minute review</div><div class="menu-card__desc">Block time with a mentor or peer.</div></button>
+        <button class="menu-card">💸<div class="menu-card__title">Set an automatic transfer</div><div class="menu-card__desc">Small recurring transfers build your buffer.</div></button>
+        <button class="menu-card">📣<div class="menu-card__title">Post an offer to social</div><div class="menu-card__desc">A limited-time deal drives quick orders.</div></button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Smart money moves for busy founders</div>
+      <p class="section-sub">A playful, practical guide to managing cash, planning for surprises, and finding alternatives when banks say "no". Interactive tools help you take one action at a time.</p>
+    </section>
+
+    <section class="tips-hero card">
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px">
+          <h2 style="font-family:'Fraunces',serif;margin-bottom:8px">Short on time? Start here.</h2>
+          <p style="color:var(--text2)">Pick one quick step and do it this week — these tiny wins build momentum.</p>
+          <ul style="margin-top:12px;color:var(--text2);line-height:1.6">
+            <li>Send a friendly invoice reminder for overdue payments.</li>
+            <li>Schedule a 30-minute financial review with a friend or mentor.</li>
+            <li>Set an automatic transfer to your buffer on payday.</li>
+            <li>Post one offer to social channels to drive immediate orders.</li>
+          </ul>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <button class="btn-hero-p" onclick="document.getElementById('actions').scrollIntoView({behavior:'smooth'})">Take a Quick Action</button>
+            <a class="btn-hero-s" href="pardna.html">Back to Home</a>
+          </div>
+        </div>
+        <div style="width:220px;display:flex;flex-direction:column;gap:8px">
+          <div class="mini-card">Budget in 10 mins — a weekly check-in</div>
+          <div class="mini-card">Emergency buffer: slider below</div>
+          <div class="mini-card">How to ask your circle for help</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- removed old checkbox quick-actions (merged into hero above) -->
+
+    <section class="card" style="margin-top:1.5rem">
+      <div class="card-title">Emergency buffer — choose a target</div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:8px">
+        <div style="flex:1;min-width:220px">
+          <p style="color:var(--text2)">Choose how many months of expenses you'd like in reserve. Start with 1 month if you have to.</p>
+          <select id="buffer-select">
+            <option value="0">0 months</option>
+            <option value="1" selected>1 month</option>
+            <option value="2">2 months</option>
+            <option value="3">3 months</option>
+            <option value="4">4 months</option>
+            <option value="5">5 months</option>
+            <option value="6">6 months</option>
+          </select>
+        </div>
+        <div style="width:160px;text-align:center">
+          <div style="font-family:'Fraunces',serif;font-size:22px;color:var(--brand)" id="buffer-months">1</div>
+          <div style="font-size:12px;color:var(--text3)">months</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:13px;color:var(--text2)" id="buffer-suggestion">If your monthly expenses are $2,000, 1 month = $2,000 saved. Automate a small transfer each payday.</div>
+    </section>
+
+    <section class="card" style="margin-top:1.5rem">
+      <div class="card-title">If you hit a cash crunch — friendly, practical steps</div>
+      <div class="accordion">
+        <button class="acc-head">1. Pause non-essential spend</button>
+        <div class="acc-body">Cut subscriptions, delay inventory orders where possible, and renegotiate payment terms.</div>
+        <button class="acc-head">2. Talk to your suppliers and partners</button>
+        <div class="acc-body">Ask for extended terms or smaller deliveries — most partners prefer a short plan over default.</div>
+        <button class="acc-head">3. Tap community alternatives</button>
+        <div class="acc-body">Community circles, friends-and-family, or local micro-lenders can provide short-term liquidity without the red tape.</div>
+        <button class="acc-head">4. Prioritize revenue-generating actions</button>
+        <div class="acc-body">Focus on promos, bundled offers, or quick services that bring cash within 7–14 days.</div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:1.5rem;margin-bottom:2.5rem">
+      <div style="text-align:center;margin-top:4px">
+        <button class="btn-hero-p" onclick="location.href='pardna.html'">Back to PARDNA</button>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script src="pardna.js"></script>
+</body>
+</html>
